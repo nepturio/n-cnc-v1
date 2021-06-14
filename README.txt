@@ -2,7 +2,7 @@
 
 arduino mega + ramps 1.4 + tb6600 drivers + nema 23 stepper motors
 
-#x-axis (ramps 1.4)             
+x-axis (ramps 1.4)             
 
   x       x       x       x       x       x       x       x       
 
@@ -29,14 +29,14 @@ pul + 5v    >>>   step x-axis (gray wire)
 
 [high voltage]
 
-b-  >>> nema 23 b- coil
+b-  >>>  nema 23 b- coil
 b+  >>>  nema 23 b+ coil
 a-  >>>  nema 23 a- coil
 a+  >>>  nema 23 a+ coil
 gnd >>>  gnd supply 
 vcc >>>  +24v supply
 
-#y-axis (ramps 1.4)             
+y-axis (ramps 1.4)             
 
   y       y       y       y       y       y       y       y       
 
@@ -63,14 +63,14 @@ pul + 5v    >>>   step y-axis (gray wire)
 
 [high voltage]
 
-b-  >>> nema 23 b- coil
+b-  >>>  nema 23 b- coil
 b+  >>>  nema 23 b+ coil
 a-  >>>  nema 23 a- coil
 a+  >>>  nema 23 a+ coil
 gnd >>>  gnd supply 
 vcc >>>  +24v supply
 
-#z-axis (ramps 1.4)             
+z-axis (ramps 1.4)             
 
   z       z       z       z       z       z       z       z       
 
@@ -97,7 +97,7 @@ pul + 5v    >>>   step z-axis (gray wire)
 
 [high voltage]
 
-b-  >>> nema 23 b- coil
+b-  >>>  nema 23 b- coil
 b+  >>>  nema 23 b+ coil
 a-  >>>  nema 23 a- coil
 a+  >>>  nema 23 a+ coil
