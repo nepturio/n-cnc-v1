@@ -1,4 +1,4 @@
-## n-cnc-v1-xy general-purpose manufacturing machine
+## n-cnc-v1-3axis general-purpose manufacturing machine
 
 arduino mega + ramps 1.4 + tb6600 drivers + nema 23 stepper motors
 
