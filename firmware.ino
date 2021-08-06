@@ -2,18 +2,12 @@
 #include <MultiStepper.h>
 #include<LiquidCrystal.h>
 
-
-
 #define LCD_PINS_RS 16 
 #define LCD_PINS_ENABLE 17
 #define LCD_PINS_D4 23
 #define LCD_PINS_D5 25 
 #define LCD_PINS_D6 27
 #define LCD_PINS_D7 29
-
-
-
-
 LiquidCrystal lcd(16, 17, 23, 25, 27, 29);
 
 #define X_STEP_PIN         54
@@ -56,6 +50,8 @@ AccelStepper stepperX(AccelStepper::DRIVER, 54, 55); AccelStepper stepperY(Accel
 //AccelStepper stepperX(AccelStepper::DRIVER, 13, 10); AccelStepper stepperY(AccelStepper::DRIVER, 12, 9); AccelStepper stepperZ(AccelStepper::DRIVER, 11, 8);
 
 MultiStepper steppers;
+
+
 String LCD; 
 String XX,YY,ZZ;
 
@@ -63,10 +59,10 @@ unsigned long previousMillis = 0;        // will store last time LED was updated
 // constants won't change:
 const long interval = 1000;     
 
-double moduloVector; //
+double moduloVector; 
 int contador=0;
 
-long positions[10]; //posiciones a ejecutar (x,y,z,m)
+long positions[3]; //posiciones a ejecutar (x,y,z)
 
 double alfa, beta, gamma, x, y, z; int u=0;
 double sx = 800; double sy = 800; double sz = 2500; 
@@ -122,21 +118,7 @@ pinMode(10, OUTPUT);
 
 }
 
-void reiniciarvariables() {
 
-  if (px != 0) { InX= ""; px=0;  } //si es igual a cero indica que no asumió el valor del contador c, por lo tanto no hubo cambios en esa coordenada
-  if (py != 0) { InY= ""; py=0; } 
-  if (pz != 0) { InZ= ""; pz=0; } 
-  if (pm != 0) { InM= ""; pm=0; } 
-  if (pg != 0) { InG= ""; pg=0; } 
-
-
-  c=0; //contador posicion de caracter
-  texto = ""; 
-  gcode=0; 
-  contador=0;
-  
-}
 
 void lecturaSerial() {
   
@@ -253,7 +235,7 @@ void lecturaSerial() {
    if(M==3)    {        Serial.println("$red26_ON#") ;         digitalWrite(13, 1);      } //plasma/router ON
    if(M==5)    {        Serial.println("$red26_OFF#") ;        digitalWrite(13, 0);      } //plasma/router OFF
       
-      //stepperX.moveTo(-alfa);   stepperY.moveTo(-beta);  stepperZ.moveTo(-gamma);
+      //stepperX.moveTo(-alfa);   stepperY.moveTo(-beta);  stepperZ.moveTo(-gamma); //para movimientos no sincronizado
 
   XX=InX;YY=InY;ZZ=InZ;
   
@@ -263,7 +245,7 @@ void lecturaSerial() {
   LCD=("[n-cnc-v1.0]        x("+XX+")y("+YY+")z("+ZZ+")"); lcd.print(LCD);
   
 
-      reiniciarvariables();    
+   reiniciarvariables();    
 
     
     
@@ -272,11 +254,26 @@ void lecturaSerial() {
     }
     
     }
-
 
 
 }
 
+
+void reiniciarvariables() {
+
+  if (px != 0) { InX= ""; px=0;  } //si es igual a cero indica que no asumió el valor del contador c, por lo tanto no hubo cambios en esa coordenada
+  if (py != 0) { InY= ""; py=0; } 
+  if (pz != 0) { InZ= ""; pz=0; } 
+  if (pm != 0) { InM= ""; pm=0; } 
+  if (pg != 0) { InG= ""; pg=0; } 
+
+
+  c=0; //contador posicion de caracter
+  texto = ""; 
+  gcode=0; 
+  contador=0;
+  
+}
 void loop() {
 
 // 
