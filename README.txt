@@ -1,4 +1,6 @@
-## n-cnc-v1-3axis general-purpose manufacturing machine
+## n-cnc-v1
+
+general-purpose manufacturing machine (plasma cutting and woodworking)
 
 arduino mega + ramps 1.4 + tb6600 drivers + nema 23 stepper motors
 
